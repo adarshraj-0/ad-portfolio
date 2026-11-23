@@ -3,6 +3,7 @@ import { personalData } from '@/utils/data/personal-data';
 import Link from 'next/link';
 import { BiLogoLinkedin } from "react-icons/bi";
 import { CiLocationOn } from "react-icons/ci";
+import { FaDev } from "react-icons/fa6";
 import { FaFacebook, FaStackOverflow } from 'react-icons/fa';
 import { FaXTwitter } from "react-icons/fa6";
 import { IoLogoGithub, IoMdCall } from "react-icons/io";
@@ -22,63 +23,87 @@ function ContactSection() {
         <ContactForm />
         <div className="lg:w-3/4 ">
           <div className="flex flex-col gap-5 lg:gap-9">
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <MdAlternateEmail
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>{personalData.email}</span>
-            </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <IoMdCall
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.phone}
-              </span>
-            </p>
-            <p className="text-sm md:text-xl flex items-center gap-3">
-              <CiLocationOn
-                className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={36}
-              />
-              <span>
-                {personalData.address}
-              </span>
-            </p>
+            {personalData.email && (
+              <p className="text-sm md:text-xl flex items-center gap-3">
+                <MdAlternateEmail
+                  className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={36}
+                />
+                <span>{personalData.email}</span>
+              </p>
+            )}
+            {personalData.phone && (
+              <p className="text-sm md:text-xl flex items-center gap-3">
+                <IoMdCall
+                  className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={36}
+                />
+                <span>
+                  {personalData.phone}
+                </span>
+              </p>
+            )}
+            {personalData.address && (
+              <p className="text-sm md:text-xl flex items-center gap-3">
+                <CiLocationOn
+                  className="bg-[#8b98a5] p-2 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={36}
+                />
+                <span>
+                  {personalData.address}
+                </span>
+              </p>
+            )}
           </div>
           <div className="mt-8 lg:mt-16 flex items-center gap-5 lg:gap-10">
-            <Link target="_blank" href={personalData.github}>
-              <IoLogoGithub
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.linkedIn}>
-              <BiLogoLinkedin
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.twitter}>
-              <FaXTwitter
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.stackOverflow}>
-              <FaStackOverflow
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
-            <Link target="_blank" href={personalData.facebook}>
-              <FaFacebook
-                className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
-                size={48}
-              />
-            </Link>
+            {personalData.github && (
+              <Link target="_blank" rel="noopener noreferrer" href={personalData.github} title="GitHub Profile">
+                <IoLogoGithub
+                  className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={48}
+                />
+              </Link>
+            )}
+            {personalData.linkedIn && (
+              <Link target="_blank" rel="noopener noreferrer" href={personalData.linkedIn} title="LinkedIn Profile">
+                <BiLogoLinkedin
+                  className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={48}
+                />
+              </Link>
+            )}
+            {personalData.devUsername && (
+              <Link target="_blank" rel="noopener noreferrer" href={personalData.devto || `https://dev.to/${personalData.devUsername}`} title="DEV.to Profile">
+                <FaDev
+                  className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={48}
+                />
+              </Link>
+            )}
+            {personalData.twitter && (
+              <Link target="_blank" rel="noopener noreferrer" href={personalData.twitter} title="Twitter Profile">
+                <FaXTwitter
+                  className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={48}
+                />
+              </Link>
+            )}
+            {personalData.stackOverflow && (
+              <Link target="_blank" rel="noopener noreferrer" href={personalData.stackOverflow} title="StackOverflow Profile">
+                <FaStackOverflow
+                  className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={48}
+                />
+              </Link>
+            )}
+            {personalData.facebook && (
+              <Link target="_blank" rel="noopener noreferrer" href={personalData.facebook} title="Facebook Profile">
+                <FaFacebook
+                  className="bg-[#8b98a5] p-3 rounded-full hover:bg-[#16f2b3] hover:scale-110 transition-all duration-300 text-gray-800 cursor-pointer"
+                  size={48}
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>

@@ -31,26 +31,27 @@ function ContactForm() {
       return;
     } else {
       setError({ ...error, required: false });
-    };
+    }
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
-        userInput
-      );
+      const appUrl = (process.env.NEXT_PUBLIC_APP_URL || "").replace(/\/+$/, "");
+      const endpoint = appUrl ? `${appUrl}/api/contact` : "/api/contact";
 
-      toast.success("Message sent successfully!");
+      const res = await axios.post(endpoint, userInput);
+
+      toast.success(res?.data?.message || "Message sent successfully!");
       setUserInput({
         name: "",
         email: "",
         message: "",
       });
-    } catch (error) {
-      toast.error(error?.response?.data?.message);
+    } catch (err) {
+      const serverMessage = err?.response?.data?.message || err?.message || "Failed to send message. Please try again later.";
+      toast.error(serverMessage);
     } finally {
       setIsLoading(false);
-    };
+    }
   };
 
   return (
@@ -69,6 +70,7 @@ function ContactForm() {
               onChange={(e) => setUserInput({ ...userInput, name: e.target.value })}
               onBlur={checkRequired}
               value={userInput.name}
+              placeholder="Your Full Name"
             />
           </div>
 
@@ -80,6 +82,7 @@ function ContactForm() {
               maxLength="100"
               required={true}
               value={userInput.email}
+              placeholder="your.email@example.com"
               onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
               onBlur={() => {
                 checkRequired();
@@ -100,21 +103,22 @@ function ContactForm() {
               onBlur={checkRequired}
               rows="4"
               value={userInput.message}
+              placeholder="Hi Adarsh, I would like to get in touch regarding..."
             />
           </div>
           <div className="flex flex-col items-center gap-3">
             {error.required && <p className="text-sm text-red-400">
-              All fiels are required!
+              All fields are required!
             </p>}
             <button
-              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
+              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold disabled:opacity-60 cursor-pointer"
               role="button"
               onClick={handleSendMail}
               disabled={isLoading}
             >
               {
                 isLoading ?
-                <span>Sending Message...</span>:
+                <span>Sending Message...</span> :
                 <span className="flex items-center gap-1">
                   Send Message
                   <TbMailForward size={20} />

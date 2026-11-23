@@ -10,9 +10,9 @@ import "./css/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Portfolio of Abu Said - Software Developer",
+  title: "Adarsh Raj - Full Stack Developer | AI/ML Enthusiast",
   description:
-    "This is the portfolio of Abu Said. I am a full stack developer and a self taught developer. I love to learn new things and I am always open to collaborating with others. I am a quick learner and I am always looking for new challenges.",
+    "Portfolio of Adarsh Raj. Full Stack Developer and AI/ML Enthusiast pursuing B.Tech in CSE (AI/ML) at Kashi Institute of Technology, Varanasi. Selected as Google Student Ambassador 2026.",
 };
 
 export default function RootLayout({ children }) {

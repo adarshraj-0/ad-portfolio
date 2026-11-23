@@ -1,0 +1,7 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="40" fill="#000000"/>
+  <path d="M50 148V108H86V118H62V123H82V133H62V138H86V148H50Z" fill="#FFFFFF"/>
+  <path d="M96 148L112 126L97 108H111L120 120L129 108H143L128 126L144 148H130L120 133L110 148H96Z" fill="#FFFFFF"/>
+  <path d="M152 148V108H178C189 108 196 114 196 123C196 132 189 138 178 138H164V148H152ZM164 128H176C181 128 184 126 184 123C184 120 181 118 176 118H164V128Z" fill="#FFFFFF"/>
+  <text x="50" y="195" font-family="system-ui, -apple-system, sans-serif" font-weight="bold" font-size="34" fill="#38BDF8">js</text>
+</svg>

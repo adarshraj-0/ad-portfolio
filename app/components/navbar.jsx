@@ -1,6 +1,6 @@
 // @flow strict
 import Link from "next/link";
-
+import { personalData } from "@/utils/data/personal-data";
 
 function Navbar() {
   return (
@@ -10,7 +10,7 @@ function Navbar() {
           <Link
             href="/"
             className=" text-[#16f2b3] text-3xl font-bold">
-            ABU SAID
+            {personalData.name.toUpperCase()}
           </Link>
         </div>
 
@@ -34,6 +34,16 @@ function Navbar() {
           </li>
           <li>
             <Link className="block px-4 py-2 no-underline outline-none hover:no-underline" href="/#projects"><div className="text-sm text-white transition-colors duration-300 hover:text-pink-600">PROJECTS</div></Link>
+          </li>
+          <li>
+            <Link
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-2 no-underline outline-none hover:no-underline"
+              href={personalData.devto || `https://dev.to/${personalData.devUsername}`}
+            >
+              <div className="text-sm text-[#16f2b3] transition-colors duration-300 hover:text-pink-500 font-semibold">DEV.TO</div>
+            </Link>
           </li>
         </ul>
       </div>

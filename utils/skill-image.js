@@ -77,13 +77,16 @@ import wordpress from '../app/assets/svg/skills/wordpress.svg';
 import pandas from '../app/assets/svg/skills/pandas.svg';
 import scikitlearn from '../app/assets/svg/skills/scikit-learn.svg';
 import dotnet from '../app/assets/svg/skills/dotnet.svg';
-import dotnetcore from '../app/assets/svg/skills/dotnetcore.svg'
-import kubernetes from '../app/assets/svg/skills/kubernetes.svg'
-import linux from '../app/assets/svg/skills/linux.svg'
-import sqlalchemy from '../app/assets/svg/skills/sqlalchemy.svg'
-import fastapi from '../app/assets/svg/skills/fastapi.svg'
+import dotnetcore from '../app/assets/svg/skills/dotnetcore.svg';
+import kubernetes from '../app/assets/svg/skills/kubernetes.svg';
+import linux from '../app/assets/svg/skills/linux.svg';
+import sqlalchemy from '../app/assets/svg/skills/sqlalchemy.svg';
+import fastapi from '../app/assets/svg/skills/fastapi.svg';
 
-
+import nodejs from '../app/assets/svg/skills/nodejs.svg';
+import express from '../app/assets/svg/skills/express.svg';
+import github from '../app/assets/svg/skills/github.svg';
+import machinelearning from '../app/assets/svg/skills/machinelearning.svg';
 
 export const skillsImage = (skill) => {
   const skillID = skill.toLowerCase();
@@ -91,6 +94,7 @@ export const skillsImage = (skill) => {
     case 'gcp':
       return gcp;
     case 'html':
+    case 'html5':
       return html;
     case 'photoshop':
       return photoshop;
@@ -103,16 +107,22 @@ export const skillsImage = (skill) => {
     case 'after effects':
       return afterEffects;
     case 'css':
+    case 'css3':
       return css;
     case 'angular':
       return angular;
     case 'javascript':
+    case 'js':
       return javascript;
     case 'next js':
+    case 'next.js':
+    case 'nextjs':
       return nextJS;
     case 'nuxt js':
       return nuxtJS;
     case 'react':
+    case 'react.js':
+    case 'reactjs':
       return react;
     case 'svelte':
       return svelte;
@@ -137,6 +147,8 @@ export const skillsImage = (skill) => {
     case 'postgresql':
       return postgresql;
     case 'tailwind':
+    case 'tailwind css':
+    case 'tailwindcss':
       return tailwind;
     case 'vitejs':
       return vitejs;
@@ -184,6 +196,8 @@ export const skillsImage = (skill) => {
       return gimp;
     case 'git':
       return git;
+    case 'github':
+      return github;
     case 'graphql':
       return graphql;
     case 'lightroom':
@@ -245,7 +259,7 @@ export const skillsImage = (skill) => {
     case '.net':
       return dotnet;
     case '.net core':
-      return dotnetcore
+      return dotnetcore;
     case 'kubernetes':
       return kubernetes;
     case 'linux':
@@ -254,7 +268,20 @@ export const skillsImage = (skill) => {
       return sqlalchemy;
     case 'fastapi':
       return fastapi;
+    case 'node js':
+    case 'node.js':
+    case 'nodejs':
+    case 'node':
+      return nodejs;
+    case 'express':
+    case 'express.js':
+    case 'expressjs':
+      return express;
+    case 'machine learning':
+    case 'machinelearning':
+    case 'ml':
+      return machinelearning;
     default:
       break;
   }
-}
+};
